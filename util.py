@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
 import os
+import codecs
+import sys
 
 def encode(text):
     """
@@ -12,3 +15,22 @@ def encode(text):
     else:
         encoding = 'utf8'   # Mac / Linux
     return text.encode(encoding, 'xmlcharrefreplace').decode(encoding)
+
+def safe_print(text):
+    '''
+    This prints text to the terminal, regardless of the OS.
+
+    It uses sys.stdout plus the codecs module to enforce UTF-8.
+    '''
+    assert type(text) == unicode
+    wrapped_stdout = codecs.getwriter('UTF-8')(sys.stdout)
+    wrapped_stdout.write(text)
+    wrapped_stdout.write('\n')
+
+def test_safe_print():
+    '''
+    This has a bunch of possibly scary Unicode test cases to make
+    sure that safe_print works on your platform.
+    '''
+    safe_print(u'☂☀♠')
+
