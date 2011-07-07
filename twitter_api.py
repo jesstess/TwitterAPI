@@ -2,7 +2,7 @@ import optparse
 import sys
 
 import twitter
-from util import encode
+from util import safe_print
 
 def search(searchTerm):
     """
@@ -11,7 +11,7 @@ def search(searchTerm):
     api = twitter.Api()
     tweets = api.GetSearch(searchTerm)
     for tweet in tweets:
-        print encode(tweet.GetText())
+        safe_print(tweet.GetText())
 
 def trendingTopics():
     """
@@ -20,7 +20,7 @@ def trendingTopics():
     api = twitter.Api()
     trending_topics = api.GetTrendsCurrent()
     for topic in trending_topics:
-        print encode(topic.name)
+        safe_print(topic.name)
 
 def userTweets(username):
     """
