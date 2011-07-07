@@ -3,19 +3,6 @@ import os
 import codecs
 import sys
 
-def encode(text):
-    """
-    Encode text so it can be safely printed to the terminal regardless of
-    operating system.
-
-    Tweets are in UTF-8, which will crash Windows cmd.exe.
-    """
-    if os.name == 'nt':     # Windows
-        encoding = 'cp437'
-    else:
-        encoding = 'utf8'   # Mac / Linux
-    return text.encode(encoding, 'xmlcharrefreplace').decode(encoding)
-
 def safe_print(text):
     '''
     This prints text to the terminal, regardless of the OS.
