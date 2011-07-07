@@ -23,7 +23,11 @@ def safe_print(text):
     It uses sys.stdout plus the codecs module to enforce UTF-8.
     '''
     assert type(text) == unicode
-    wrapped_stdout = codecs.getwriter('UTF-8')(sys.stdout)
+    if os.name == 'nt':     # Windows
+        encoding = 'cp437'
+    else:
+        encoding = 'utf8'   # Mac / Linux
+    wrapped_stdout = codecs.getwriter(encoding)(sys.stdout)
     wrapped_stdout.write(text)
     wrapped_stdout.write('\n')
 
