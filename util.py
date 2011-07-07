@@ -37,4 +37,3 @@ def test_safe_print():
     sure that safe_print works on your platform.
     '''
     safe_print(u'☂☀♠')
-
