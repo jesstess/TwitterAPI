@@ -11,10 +11,10 @@ def safe_print(text):
     '''
     assert type(text) == unicode
     if os.name == 'nt':     # Windows
-        encoding = 'cp437'
-    else:
-        encoding = 'utf8'   # Mac / Linux
-    wrapped_stdout = codecs.getwriter(encoding)(sys.stdout)
+        codec = codecs.lookup('cp437')
+    else:                   # Mac / Linux
+        codec = codecs.lookup('utf8')
+    wrapped_stdout = codec.streamwriter(sys.stdout, errors='replace')
     wrapped_stdout.write(text)
     wrapped_stdout.write('\n')
 
