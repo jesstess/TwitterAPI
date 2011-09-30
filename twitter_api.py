@@ -2,7 +2,7 @@ import optparse
 import sys
 
 import twitter
-from util import safe_print
+import util
 
 def search(searchTerm):
     """
@@ -11,7 +11,7 @@ def search(searchTerm):
     api = twitter.Api()
     tweets = api.GetSearch(searchTerm)
     for tweet in tweets:
-        safe_print(tweet.GetText())
+        util.safe_print(tweet.GetText())
 
 def trendingTopics():
     """
@@ -20,7 +20,7 @@ def trendingTopics():
     api = twitter.Api()
     trending_topics = api.GetTrendsCurrent()
     for topic in trending_topics:
-        safe_print(topic.name)
+        util.safe_print(topic.name)
 
 def userTweets(username):
     """
