@@ -17,6 +17,12 @@ def main(args):
                       dest="trending_topics",
                       default=False,
                       help="Display the trending topics.")
+    parser.add_option("-u", "--user-tweets",
+                      type="string",
+                      action="store",
+                      dest="user_tweets",
+                      default=False,
+                      help="Display a user's tweets.")
 
     (opts, args) = parser.parse_args(args)
 
@@ -24,6 +30,8 @@ def main(args):
         twitter_functions.search(opts.search_term)
     elif opts.trending_topics:
         twitter_functions.trendingTopics()
+    elif opts.user_tweets:
+        twitter_functions.userTweets(opts.user_tweets)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
