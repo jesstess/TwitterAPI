@@ -1,6 +1,8 @@
 import twitter
 import util
 
+BOSTON_WOEID = 2367105
+
 def search(searchTerm):
     """
     Print recent tweets containing `searchTerm`.
@@ -15,7 +17,8 @@ def trendingTopics():
     Print the currently trending topics.
     """
     api = twitter.Api()
-    trending_topics = api.GetTrendsCurrent()
+
+    trending_topics = api.GetTrendsWoeid(BOSTON_WOEID)
     for topic in trending_topics:
         util.safe_print(topic.name)
 
