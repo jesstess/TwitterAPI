@@ -34,6 +34,8 @@ def userTweets(username):
     """
     Print recent tweets by `username`.
 
+    You may find the twitter.Api() function GetUserTimeline() helpful.
+
     To test this function, at the command line run:
         python twitter_api.py -u <username>
     For example,
