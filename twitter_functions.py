@@ -6,6 +6,11 @@ BOSTON_WOEID = 2367105
 def search(searchTerm):
     """
     Print recent tweets containing `searchTerm`.
+
+    To test this function, at the command line run:
+        python twitter_api.py --search=<search term>
+    For example,
+        python twitter_api.py --search=python
     """
     api = twitter.Api()
     tweets = api.GetSearch(searchTerm)
@@ -15,6 +20,9 @@ def search(searchTerm):
 def trendingTopics():
     """
     Print the currently trending topics.
+
+    To test this function, at the command line run:
+        python twitter_api.py -t
     """
     api = twitter.Api()
 
@@ -25,11 +33,19 @@ def trendingTopics():
 def userTweets(username):
     """
     Print recent tweets by `username`.
+
+    To test this function, at the command line run:
+        python twitter_api.py -u <username>
+    For example,
+        python twitter_api.py -u bostonpython
     """
     pass
 
 def trendingTweets():
     """
     Print tweets for all the trending topics.
+
+    To test this function, at the command line run:
+        python twitter_api.py -w
     """
     pass
